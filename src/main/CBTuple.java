@@ -1,4 +1,4 @@
-package booleanArray;
+package main;
 
 
 import java.util.Arrays;
@@ -20,6 +20,7 @@ public class CBTuple {
         Arrays.fill(array, 0);
     }
 
+    // Create new tuple by negating a tuple
     public static CBTuple not(CBTuple tuple) {
         CBTuple negatedTuple = new CBTuple(tuple.getSize());
 
@@ -30,6 +31,7 @@ public class CBTuple {
         return negatedTuple;
     }
 
+    // Create new tuple by combining two tuples with the and operator
     public static CBTuple and(CBTuple tuple1, CBTuple tuple2) {
         CBTuple andTuple = new CBTuple(tuple1.getSize());
 
@@ -40,6 +42,7 @@ public class CBTuple {
         return andTuple;
     }
 
+    // Create new tuple by combining two tuples with the or operator
     public static CBTuple or(CBTuple tuple1, CBTuple tuple2) {
         CBTuple orTuple = new CBTuple(tuple1.getSize());
 
@@ -50,7 +53,34 @@ public class CBTuple {
         return orTuple;
     }
 
+    // Get the total number of items in the counting tuple
+    public int getTotal() {
+        int total = 0;
+
+        for (int occurrenceNr : array) {
+            total += occurrenceNr;
+        }
+
+        return total;
+    }
+
+    // Get number of non-zero entries in tuple
+    public int getNonZero() {
+        int nrNonZero = 0;
+        for (int occurrenceNr : array) {
+            if (occurrenceNr != 0) {
+                nrNonZero += 1;
+            }
+        }
+
+        return nrNonZero;
+    }
+
     public void addOccurrence(int index) {
         array[index] += 1;
+    }
+
+    public int getAt(int index) {
+        return  array[index];
     }
 }
